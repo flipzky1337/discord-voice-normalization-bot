@@ -1,7 +1,7 @@
 import datetime
 
 from pydub import AudioSegment
-import glob, os, statistics, math, asyncio
+import glob, os, statistics, math
 import config
 
 
@@ -15,8 +15,8 @@ def get_dbfs(guild_id):
         if time_distinction.days >= 2:
             os.remove(file)
         else:
-            audio = AudioSegment.from_file(file).dBFS
-            list.append((file[0:len(file) - 4], audio))
+            audio = AudioSegment.from_file(file).dBFS # https://github.com/jiaaro/pydub/blob/master/API.markdown#audiosegmentdbfs
+            list.append((file[0:len(file) - 4], audio)) # file[:-4] чтобы убрать .mp3 в конце
             cnt += 1
 
     print(guild_id)
@@ -27,11 +27,11 @@ def get_dbfs(guild_id):
 
 
 def i_hate_math(ListDbfs):
-    timedlist = [x[1] for x in ListDbfs]
+    timedlist = [x[1] for x in ListDbfs] # dbfs из кортежей
     array_of_perc = []
     print(timedlist)
-    med = statistics.median(timedlist)
-    perc_med = math.pow(10, med / 10)
+    med = statistics.median(timedlist) # берёт медиану из ВСЕХ dbfs
+    perc_med = math.pow(10, med / 10) # переводит медиану из dbfs в проценты
     for i in range(len(timedlist)):
         j = math.pow(10, timedlist[i] / 10) / perc_med * 100
         if 0 <= j <= 200:

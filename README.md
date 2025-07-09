@@ -1,4 +1,7 @@
-discord bot made on python that "normalizes" audio loudness of connected users in VC. 
+pip install poetry
 
-pydub, discord.py required to run.
-be aware of extreme shitcode that i won't expain.
+then poetry install;
+
+run main.py to start the bot.
+
+config.py needed (discord key val in key string)

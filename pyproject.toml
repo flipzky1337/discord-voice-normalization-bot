@@ -1,0 +1,23 @@
+[project]
+name = "discord-voice-normalization-bot"
+version = "0.1.0"
+description = "bad bot built on discord.py"
+authors = [
+    {name = "Your Name",email = "you@example.com"}
+]
+readme = "README.md"
+requires-python = ">3.12"
+dependencies = [
+    "py-cord[voice] (>=2.5.2,<3.0.0)",
+    "pydub (>=0.25.1,<0.26.0)"
+]
+
+[tool.poetry]
+packages = [
+    { include = "src" }
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
